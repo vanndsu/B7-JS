@@ -32,16 +32,16 @@ if (ok) {
 
 //função some (retorna true se tivem algum item que satisfaz)
 
-let algum = fruits.some((value) => value.length < 4)
+let algum = fruits.some((value) => value.length < 4);
 
-if(algum){
-  console.log('Alguem satisfaz')
-}else console.log('Ngm satisfaz')
+if (algum) {
+  console.log("Alguem satisfaz");
+} else console.log("Ngm satisfaz");
 
 //função includes (verifica se o item dito contém no array)
 fruits.pop();
 fruits.pop();
 fruits.pop();
-if(fruits.includes('Uva')){
-  console.log('Tem uva!!!')
-}else console.log('Não tem uva.');
+if (fruits.includes("Uva")) {
+  console.log("Tem uva!!!");
+} else console.log("Não tem uva.");
