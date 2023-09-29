@@ -1,4 +1,4 @@
-//intrudução
+//introdução
 /*
 function apertou(){
     console.log('Apertou!')
