@@ -11,6 +11,11 @@ class Person {
   takeAStep() {
     this.steps = this.steps + 1; //pega os passos atuais do objeto e adiciona + 1;
   }
+  setAge(newAge){
+    if(typeof newAge == 'number'){
+        this.age = newAge;
+    }
+  }
 }
 
 let p1 = new Person("João"); //instanciando um nome ao modelo feito no construtor
@@ -23,8 +28,10 @@ console.log(`A Pessoa 1 tem o nome: ${p1.name}, e ${p1.age} anos`);
 console.log(`A Pessoa 2 tem o nome: ${p2.name}, e ${p2.age} anos`);
 console.log(`A Pessoa 2 tem o nome: ${p3.name}, e ${p3.age} anos`);
 
-p1.takeAStep(); //chamando a função somente para p1
-p1.takeAStep();
-console.log(`${p1.name} deu ${p1.steps} passos`);
+p3.takeAStep()//chamando a função que atribui um passo ao objeto
+p3.takeAStep()//incrementando mais um passo
+console.log(`${p3.name} deu ${p3.steps} passos`)
 
-console.log(`${p2.name} deu ${p3.steps} passos`);
+
+p2.setAge(13)//setando um número na função para ser a nova idade de p2
+console.log(`Nova idade de ${p2.name}: ${p2.age} anos`)
