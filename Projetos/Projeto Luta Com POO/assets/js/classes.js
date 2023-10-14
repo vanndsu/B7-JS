@@ -15,7 +15,7 @@ class Character {
   }
 }
 
-class Knight extends Character {
+export class Knight extends Character {
   constructor(name) {
     super(name);
     this.life = 100;
@@ -25,7 +25,7 @@ class Knight extends Character {
   }
 }
 
-class Sorcerer extends Character {
+export class Sorcerer extends Character {
   constructor(name) {
     super(name);
     this.life = 80;
@@ -35,3 +35,7 @@ class Sorcerer extends Character {
   }
 }
 
+/*module.exports = {
+  Knight,
+  Sorcerer,
+};*/ //usado para  exportar usando o CommomJS(Ambiente Node)
