@@ -35,6 +35,44 @@ export class Sorcerer extends Character {
   }
 }
 
+export class LittleMonster extends Character {
+  constructor() {
+    super("Little Monster");
+    this.life = 40;
+    this.attack = 4;
+    this.defense = 4;
+    this.maxLife = this.life;
+  }
+}
+export class BigMonster extends Character {
+  constructor() {
+    super("Big Monster");
+    this.life = 120;
+    this.attack = 16;
+    this.defense = 6;
+    this.maxLife = this.life;
+  }
+}
+
+export class Stage {
+  constructor(fighter1, fighter2, fighter1El, fighter2El) {
+    this.fighter1 = fighter1;
+    this.fighter1El = fighter1El;
+    this.fighter2 = fighter2;
+    this.fighter2El = fighter2El;
+  }
+  start() {
+    this.update();
+    //TODO: Evento do botão de atacar.
+  }
+  update() {
+    //Fighter 1
+    this.fighter1El.querySelector(".name").innerHTML = this.fighter1.name;
+    //Fighter 2
+    this.fighter2El.querySelector(".name").innerHTML = this.fighter2.name;
+  }
+}
+
 /*module.exports = {
   Knight,
   Sorcerer,
