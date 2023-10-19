@@ -6,18 +6,22 @@ import {
   LittleMonster,
   BigMonster,
   Stage,
+  Log,
 } from "./classes.js";
 
-let knight = new Knight("Guerreiro");
+let log = new Log(document.querySelector(".log"));
+
+let knight = new Knight("Gladiador");
 let sorcerer = new Sorcerer("Mago");
 let littleMonster = new LittleMonster();
 let bigMonster = new BigMonster();
 
 const stage = new Stage(
   knight,
-  littleMonster,
+  bigMonster,
   document.querySelector("#char"),
-  document.querySelector("#monster")
+  document.querySelector("#monster"),
+  log
 );
 
 stage.start();
