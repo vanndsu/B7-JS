@@ -1,5 +1,5 @@
 class Person {
-  age = 10;
+  age = 0;
 
   constructor(nome) {
     this.nome = nome;
@@ -15,7 +15,7 @@ function createPerson(nome, idade) {
   return p;
 }
 
-let p1 = createPerson("Vandim", 10);
+let p1 = createPerson("Vandim", 23);
 
 //saída do exemplo
 console.log(`${p1.nome} tem ${p1.age} anos`);
