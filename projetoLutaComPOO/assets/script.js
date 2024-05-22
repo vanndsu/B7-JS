@@ -1,14 +1,18 @@
-
 //importando classes no modelo ES6.
-//import {Knight} from './classes';
-//import {Sorcerer} from "./classes";
+import { Sorcerer, Knight, Stage, Monster } from "./classes.js";
 
 //importando usando o node.js
-const {Monster,Knight,Sorcerer,LittleMonster} = require('./classes');
+//const {Monster,Knight,Sorcerer,LittleMonster, Stage} = require('./classes');
 
 
-let char1 = new Knight('Capote')
-let char2 = new Monster();
+  let char1 = new Knight("Capote");
+  let char2 = new Sorcerer('Bubu');
 
-console.log(char2.attack,char1.name,char2.name)
+  const stage = new Stage(
+    char1,
+    char2,
+    document.querySelector("#char"),
+    document.querySelector("#monster")
+  );
 
+  stage.start();
