@@ -1,24 +1,23 @@
-.fight-area{
-    display: flex;
-    gap: 20px;
+.fight-area {
+  display: flex;
+  gap: 20px;
 }
 #char,
-#char2{
-    flex: 1;
-    display: flex;
-    flex-direction: column;
+#char2 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
-.life-bar{
-    border: 1px solid black;
-    height: 10px;
+.life-bar {
+  border: 1px solid black;
+  height: 10px;
 }
-.bar{
-   
-    background-color: blueviolet;
-    height: inherit;
+.bar {
+  background-color: blueviolet;
+  height: inherit;
 }
-.log{
-    overflow-y: scroll;
-    border: 1px dotted black;
-    height: 500px;
+.log {
+  overflow-y: scroll;
+  border: 1px dotted black;
+  height: 500px;
 }

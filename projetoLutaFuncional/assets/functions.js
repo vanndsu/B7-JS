@@ -32,12 +32,14 @@ export const Stage = {
   fighter2: null,
   fighter1El: null,
   fighter2El: null,
+  log: null,
 
-  start(fighter1, fighter2, fighter1El, fighter2El) {
+  start(fighter1, fighter2, fighter1El, fighter2El, logEl) {
     (this.fighter1 = fighter1),
       (this.fighter2 = fighter2),
       (this.fighter1El = fighter1El),
-      (this.fighter2El = fighter2El);
+      (this.fighter2El = fighter2El),
+      (this.log = logEl);
 
     this.fighter1El.querySelector("button").addEventListener("click", () => {
       this.doAttack(fighter1, fighter2);
@@ -57,20 +59,20 @@ export const Stage = {
 
     if (actualAttack > actualDefense && attacked.life > 0) {
       attacked.life -= actualAttack;
-      
+
       if (attacked.life < 0) {
         attacked.life = 0;
       }
 
-      console.log(
+      this.msg(
         `${attacking.name} causou ${actualAttack.toFixed(2)} de dano em ${
           attacked.name
         }`
       );
     } else if (attacked.life <= 0) {
-      console.log(`${attacked.name} está morto`);
+      this.msg(`${attacked.name} está morto`);
     } else {
-      console.log(`${attacked.name} defendeu o ataque de ${attacking.name}`);
+      this.msg(`${attacked.name} defendeu o ataque de ${attacking.name}`);
     }
 
     this.update(this.fighter1, this.fighter2, this.fighter1El, this.fighter2El);
@@ -89,6 +91,13 @@ export const Stage = {
     fighter2El.querySelector(".name").innerHTML = `${
       fighter2.name
     } - ${fighter2.life.toFixed(1)} HP`;
+  },
+  msg(msg) {
+    let list = [];
+
+    list = msg;
+
+    this.log.innerHTML += `<li>${list}</li>`;
   },
 };
 
