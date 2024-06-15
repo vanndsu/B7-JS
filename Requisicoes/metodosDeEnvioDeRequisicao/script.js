@@ -1,35 +1,35 @@
 const clicou = () => {
-  //por padrão o método no fetch é GET, pegar uma informação.
+  // Por padrão o método no fetch é GET, pegar uma informação.
   fetch("https://jsonplaceholder.typicode.com/posts")
     .then((response) => {
-      //a função status retorna o código da operação.
+      // A função status retorna o código da operação.
       console.log("Código da operação: " + response.status);
-      return response.json();
+      return response.json(); // retorna uma promessa que resolve para um objeto JavaScript
     })
     .then((dados) => {
-      alert("ID da requisição: " + dados[1].id);
+      alert("ID da requisição: " + dados[1].id); // 'dados' é o objeto JavaScript resultante do JSON
     })
-    //pega o que deu errado na requisição
+    // Retorna o que deu errado na requisição
     .catch((error) => {
       alert("Erro ao executar a requisição");
       console.log(error);
     })
-    //callback que será executado no final de tudo
-    //função backup
+    // Callback que será executado no final de tudo
+    // Função backup
     .finally(() => {
       alert("executado de intrometido");
     });
 };
 
 function inserir() {
-  //colocando o método POST para inserir uma informação nova.
+  // Colocando o método POST para inserir uma informação nova.
   fetch("https://jsonplaceholder.typicode.com/posts", {
     method: "POST",
     headers: {
-      //no exemplo, a forma de como vai mandar o body na requisição é através de um json
+      // No exemplo, a forma de como vai mandar o body na requisição é através de um json
       "Content-Type": "application/json",
     },
-    //função que manda um objeto, e é traduzida em um json.
+    // Função que manda um objeto, e é traduzida em um json.
     body: JSON.stringify({
       userId: 3,
       title: "Titulo teste",
