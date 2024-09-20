@@ -32,10 +32,12 @@ h1 {
   align-items: center;
   font-size: 30px;
   font-weight: bold;
+  cursor: pointer;
 }
 .key.active {
   border: 2px solid #ff0;
   color: #ff0;
+  transform: scale(1.1, 1.1);
 }
 
 .composer {

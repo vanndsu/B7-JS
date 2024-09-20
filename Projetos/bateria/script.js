@@ -1,49 +1,64 @@
-// Adiciona um ouvinte de eventos para capturar quando uma tecla é solta no teclado
+// Adiciona um ouvinte de evento ao corpo da página que detecta quando uma tecla é solta
 document.body.addEventListener("keyup", (event) => {
-  console.log(event); // Exibe o objeto do evento no console
-  console.log(event.key); // Exibe qual tecla foi pressionada
-  console.log(event.code.toLowerCase()); // Exibe o código da tecla em letras minúsculas
-  playSound(event.code.toLowerCase()); // Chama a função playSound() passando o código da tecla pressionada
+  playMusic(event.code.toLowerCase()); // Chama a função playMusic passando o código da tecla pressionada em letras minúsculas
 });
 
-// Adiciona um ouvinte de eventos ao botão "composer" para criar uma composição de sons
+// Adiciona um ouvinte de evento ao botão do compositor que detecta o clique
 document.querySelector(".composer button").addEventListener("click", () => {
-  let song = document.querySelector("#input").value; // Obtém o valor digitado no campo de entrada
-  console.log(song); // Exibe a string da composição digitada
-  if (song !== "") { // Verifica se a string não está vazia
-    let songArray = song.split(""); // Converte a string em um array de caracteres
-    console.log(songArray); // Exibe o array de caracteres da composição
-    playComposition(songArray); // Chama a função playComposition() passando o array de sons
-  }
+  let inputComposer = document.querySelector("#input").value; // Obtém o valor digitado no input
+  let arrayInputComposer = inputComposer.split(""); // Converte a string do input em um array de caracteres
+
+  playComposer(arrayInputComposer); // Chama a função playComposer passando o array da composição
 });
 
-// Função responsável por tocar um som baseado na tecla pressionada
-function playSound(sound) {
-  let audioElement = document.querySelector(`#s_${sound}`); // Seleciona o elemento de áudio correspondente ao som
-  console.log(audioElement); // Exibe o elemento de áudio no console
-  let keyElement = document.querySelector(`div[data-key="${sound}"]`); // Seleciona o elemento da tecla na interface visual
+let keysSound = document.querySelectorAll(".key"); // Seleciona todos os elementos com a classe 'key' (teclas visuais)
 
-  if (audioElement) { // Verifica se o elemento de áudio existe
-    audioElement.currentTime = 0; // Reseta o áudio para tocar do início
-    audioElement.play(); // Toca o som
+/* Código comentado para adicionar um ouvinte de clique em cada tecla visual
+for(let keyElement of keysSound){
+  keyElement.addEventListener('click',()=>{
+    console.log(keyElement.getAttribute('data-key')) // Exibe no console o valor do atributo 'data-key'
+    playMusic(keyElement.getAttribute("data-key")); // Toca o som correspondente à tecla clicada
+  })
+}*/
+
+// Alternativa usando forEach para adicionar o ouvinte de clique a cada tecla visual
+keysSound.forEach((keyElement) => {
+  keyElement.addEventListener("click", () => {
+    console.log(keyElement.getAttribute("data-key")); // Exibe no console o valor de 'data-key' da tecla clicada
+    console.log(keysSound); // Exibe no console a lista de todas as teclas
+    playMusic(keyElement.getAttribute("data-key")); // Chama a função playMusic passando o valor de 'data-key'
+  });
+});
+
+// Função que toca o som e adiciona o efeito visual à tecla correspondente
+function playMusic(keyCode) {
+  let soundArquive = document.querySelector(`#s_${keyCode}`); // Seleciona o arquivo de som correspondente ao código da tecla
+  let buttonMusic = document.querySelector(`div[data-key='${keyCode}']`); // Seleciona o botão visual correspondente
+
+  if (soundArquive) {
+    // Verifica se o arquivo de som existe
+    soundArquive.currentTime = 0; // Reseta o áudio para o início
+    soundArquive.play(); // Toca o som
   }
-  if (keyElement) { // Verifica se o elemento visual da tecla existe
-    keyElement.classList.add("active"); // Adiciona a classe "active" para dar o efeito visual de tecla pressionada
+
+  if (buttonMusic) {
+    // Verifica se a tecla visual existe
+    buttonMusic.classList.add("active"); // Adiciona a classe 'active' para o efeito visual
     setTimeout(() => {
-      keyElement.classList.remove("active"); // Remove a classe "active" após 300ms para reverter o efeito visual
+      buttonMusic.classList.remove("active"); // Remove a classe 'active' após 300ms, removendo o efeito visual
     }, 300);
   }
 }
 
-// Função para tocar a sequência de sons da composição digitada pelo usuário
-function playComposition(songArray) {
-  let wait = 0; // Variável para controlar o tempo de espera entre os sons
+// Função que toca uma sequência de notas (composição) a partir do array de entradas
+function playComposer(arrayInputComposer) {
+  let wait = 0; // Define um tempo inicial de espera entre as notas
 
-  // Para cada item da composição, toca o som correspondente
-  for (let songItem of songArray) {
+  // Para cada nota da composição, define um tempo de espera e chama a função playMusic
+  for (let keyValueInputComposer of arrayInputComposer) {
     setTimeout(() => {
-      playSound(`key${songItem}`); // Chama a função playSound() para cada item com um delay
-    }, wait); // Adiciona um tempo de espera para que os sons não toquem ao mesmo tempo
-    wait += 250; // Incrementa o tempo de espera para o próximo som
+      playMusic(`key${keyValueInputComposer.toLowerCase()}`); // Toca a nota correspondente à tecla
+    }, wait); // Aumenta o tempo de espera antes de tocar a próxima nota
+    wait += 250; // Adiciona 250ms de intervalo entre cada nota
   }
 }
