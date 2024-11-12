@@ -1,5 +1,6 @@
 //Initial Data
 let currentQuestion = 0;
+let correctAnswers = 0;
 
 //Functions
 function showQuestion() {
@@ -18,8 +19,24 @@ function showQuestion() {
       }</span>${q.options[i]}</div>`;
     }
     document.querySelector(".options").innerHTML = optionsHtml;
+    document.querySelectorAll(".options .option").forEach((item) => {
+      item.addEventListener("click", optionClickEvent);
+    });
   } else {
     //acabaram as questões.
   }
 }
+function optionClickEvent(e) {
+  let clickedOption = parseInt(e.target.getAttribute("data-op"));
+
+  if (questions[currentQuestion].answer === clickedOption) {
+    console.log("acertou mizeravi");
+    correctAnswers++;
+    console.log(correctAnswers);
+  } else console.log("erooooou");
+
+  currentQuestion++;
+  showQuestion();
+}
+
 showQuestion();
