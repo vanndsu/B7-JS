@@ -1,13 +1,20 @@
 let totalSlides = document.querySelectorAll(".slider--item").length;
 
 let currentSlide = 0;
+let sliderWidth = document.querySelector(".slider").clientWidth;
 
-document.querySelector(
-  ".slider--width"
-).style.width = `calc(100vw * ${totalSlides})`;
+document.querySelector(".slider--width").style.width = `${
+  sliderWidth * totalSlides
+}px`;
 document.querySelector(".slider--controls").style.height = `${
   document.querySelector(".slider").clientHeight
 }px`;
+document.querySelector(".slider--controls").style.width = `${
+  document.querySelector(".slider").clientWidth
+}px`;
+document.querySelectorAll(".slider--item").forEach((slide) => {
+  slide.style.width = `${sliderWidth}px`;
+});
 
 function goPrev() {
   currentSlide--;
@@ -25,7 +32,8 @@ function goNext() {
   updateMargin();
 }
 function updateMargin() {
-  let newMargin = currentSlide * document.body.clientWidth;
+  let slideItemWidth = document.querySelector(".slider--item").clientWidth;
+  let newMargin = currentSlide * slideItemWidth;
   document.querySelector(".slider--width").style.marginLeft = `-${newMargin}px`;
 }
 setInterval(goNext, 2000);
