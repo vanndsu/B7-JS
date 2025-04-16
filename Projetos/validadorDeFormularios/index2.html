@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Validador</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/script/script.js" defer></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="left-side">
+        <div class="left-side-container">
+          <div class="title">General Information</div>
+          <div class="left-side-informations">
+            <form>
+              <label>
+                <select class="input-select">
+                  <option value="" disabled selected hidden>Title</option>
+                  <option value="Suporte">Suporte</option>
+                  <option value="Atendimento">Atendimento</option>
+                  <option value="Estoque">Estoque</option>
+                </select>
+              </label>
+              <div class="full-name">
+                <label><input type="text" placeholder="First Name" /></label>
+                <label><input type="text" placeholder="Last Name" /></label>
+              </div>
+              <label>
+                <select class="input-select">
+                  <option value="" disabled selected hidden>Position</option>
+                  <option value="Suporte">Suporte</option>
+                  <option value="Atendimento">Atendimento</option>
+                  <option value="Estoque">Estoque</option>
+                </select>
+              </label>
+              <label><input type="text" placeholder="Company" /></label>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="right-side">
+        <div class="right-side-container">
+          <div class="title">Contact Details</div>
+          <div class="right-side-informations">
+            <form>
+              <label><input type="text" placeholder="Street + Nr" /></label>
+              <label>
+                <select class="input-select-white">
+                  <option value="" disabled selected hidden>Country</option>
+                  <option value="Argentina">Argentina</option>
+                  <option value="Brasil">Brasil</option>
+                  <option value="Belgica">Belgica</option>
+                </select>
+              </label>
+              <label class="code-number">
+                <input type="text" class="code" placeholder="Code +" />
+                <input type="text" class="number" placeholder="Phone Number" />
+              </label>
+              <label><input type="text" placeholder="Your E-mail" /></label>
+              <label class="check-box-terms">
+                <input type="checkbox" />
+                <span>
+                  I do accept the <a href="#">terms and conditions</a> of your site.
+                </span>
+              </label>
+              <label><button class="boti" type="button">Register Badge</button></label>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

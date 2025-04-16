@@ -4,65 +4,97 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Validador</title>
+    <!-- Estilo externo -->
     <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- Carrega o script ao final para evitar bloqueio de renderização -->
+    <script src="assets/script/script.js" defer></script>
   </head>
 
   <body>
     <div class="container">
+      <!-- Lado esquerdo do formulário -->
       <div class="left-side">
         <div class="left-side-container">
-          <div class="title">General Infomation</div>
+          <div class="title">General Information</div>
+          <form>
+            <!-- Select de título -->
+            <label>
+              <select name="title" class="input-select">
+                <option value="" disabled selected hidden>Title</option>
+                <option value="Suporte">Suporte</option>
+                <option value="Atendimento">Atendimento</option>
+                <option value="Estoque">Estoque</option>
+              </select>
+            </label>
 
-          <div class="left-side-informations">
-            <form action="">
-              <label for=""
-                ><select name="title" id="" class="input-select">
-                  <option value="" disabled selected hidden>Title</option>
-                  <option value="Suporte">Suporte</option>
-                  <option value="Atendimento">Atendimento</option>
-                  <option value="Estoque">Estoque</option>
-                </select></label
-              >
-              <div class="full-name">
-                <label for=""
-                  ><input type="text" placeholder="First Name"
-                /></label>
-                <label for=""
-                  ><input type="text" placeholder="Last Name"
-                /></label>
-              </div>
-              <label for=""
-                ><select name="position" id="" class="input-select">
-                  <option
-                    value=""
-                    disabled
-                    selected
-                    hidden
-                    style="color: #a9a9a9"
-                  >
-                    Position
-                  </option>
-                  <option value="Suporte">Suporte</option>
-                  <option value="Atendimento">Atendimento</option>
-                  <option value="Estoque">Estoque</option>
-                </select></label
-              >
-              <label for="">
-                <input type="text" placeholder="Company" />
-              </label>
-            </form>
-          </div>
+            <!-- Nome completo -->
+            <div class="full-name">
+              <label><input type="text" placeholder="First Name" /></label>
+              <label><input type="text" placeholder="Last Name" /></label>
+            </div>
+
+            <!-- Select de posição -->
+            <label>
+              <select name="position" class="input-select">
+                <option value="" disabled selected hidden>Position</option>
+                <option value="Suporte">Suporte</option>
+                <option value="Atendimento">Atendimento</option>
+                <option value="Estoque">Estoque</option>
+              </select>
+            </label>
+
+            <!-- Empresa -->
+            <label>
+              <input type="text" placeholder="Company" />
+            </label>
+          </form>
         </div>
       </div>
+
+      <!-- Lado direito do formulário -->
       <div class="right-side">
         <div class="right-side-container">
           <div class="title">Contact Details</div>
-          <div class="right-side-informations">
-            <div class=""></div>
-            <div></div>
-            <div></div>
-            <div></div>
-          </div>
+          <form>
+            <!-- Rua + número -->
+            <label>
+              <input type="text" placeholder="Street + Nr" />
+            </label>
+
+            <!-- País -->
+            <label>
+              <select name="country" class="input-select-white">
+                <option value="" disabled selected hidden>Country</option>
+                <option value="Argentina">Argentina</option>
+                <option value="Brasil">Brasil</option>
+                <option value="Belgica">Belgica</option>
+              </select>
+            </label>
+
+            <!-- Código e telefone -->
+            <label class="code-number">
+              <input type="text" class="code" placeholder="Code +" />
+              <input type="text" class="number" placeholder="Phone Number" />
+            </label>
+
+            <!-- E-mail -->
+            <label>
+              <input type="text" placeholder="Your E-mail" />
+            </label>
+
+            <!-- Termos -->
+            <label class="check-box-terms">
+              <input type="checkbox" />
+              <span>
+                I do accept the <a href="#">terms and conditions</a> of your site.
+              </span>
+            </label>
+
+            <!-- Botão -->
+            <label>
+              <button type="button" class="boti">Register Badge</button>
+            </label>
+          </form>
         </div>
       </div>
     </div>

@@ -27,6 +27,7 @@ form {
 .right-side .title {
   color: #ffffff;
 }
+
 label {
   width: 100%;
 }
@@ -39,12 +40,19 @@ select:focus {
 input,
 select {
   border: none;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #a9a9a9;
   width: 100%;
   padding: 20px;
   box-sizing: border-box;
 }
-::placeholder {
+select {
+  color: #a9a9a9;
+}
+.input-select.has-value {
+  color: #000;
+}
+
+input::placeholder {
   color: #a9a9a9;
 }
 .left-side,
@@ -67,16 +75,44 @@ select {
 
 .full-name {
   display: flex;
-  justify-content: space-around;
   gap: 20px;
 }
-.full-name label {
+.right-side input,
+.right-side select {
+  background-color: transparent;
+}
+
+.code-number {
+  display: flex;
+  gap: 20px;
+}
+.code-number .code {
   flex: 1;
 }
-.full-name input {
-  width: 100%;
+.code-number .number {
+  flex: 3;
 }
-.full-name :nth-child(2) {
+.check-box-terms {
   display: flex;
-  justify-content: end;
+  font-size: 12px;
+  gap: 10px;
+  align-items: center;
+  color: #fff;
+}
+.check-box-terms input {
+  width: 12px;
+}
+.check-box-terms a {
+  color: #fff;
+}
+button {
+  padding: 10px;
+  border-radius: 20px;
+}
+.input-select-white.has-value-white {
+  color: #fff;
+  background-color: #4835d4;
+}
+.input-select-white.has-value-white option {
+  color: #fff; /* Cor do texto dentro das opções */
 }
