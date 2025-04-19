@@ -4,22 +4,28 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Validador</title>
+
     <!-- Estilo externo -->
     <link rel="stylesheet" href="assets/css/style.css" />
-    <!-- Carrega o script ao final para evitar bloqueio de renderização -->
-    <script src="assets/script/script.js" defer></script>
   </head>
 
   <body>
-    <div class="container">
-      <!-- Lado esquerdo do formulário -->
-      <div class="left-side">
-        <div class="left-side-container">
-          <div class="title">General Information</div>
-          <form>
-            <!-- Select de título -->
-            <label>
-              <select name="title" class="input-select">
+    <!-- Formulário principal com método POST -->
+    <form method="POST" action="https://chatgpt.com/" class="validator">
+      <div class="container">
+        <!-- Lado esquerdo do formulário: informações gerais -->
+        <div class="left-side">
+          <div class="left-side-container">
+            <div class="title">General Information</div>
+
+            <!-- Campo de título (select obrigatório) -->
+            <label for="title">
+              <select
+                id="title"
+                name="title"
+                class="input-select"
+                data-rules="select-required"
+              >
                 <option value="" disabled selected hidden>Title</option>
                 <option value="Suporte">Suporte</option>
                 <option value="Atendimento">Atendimento</option>
@@ -29,13 +35,28 @@
 
             <!-- Nome completo -->
             <div class="full-name">
-              <label><input type="text" placeholder="First Name" /></label>
-              <label><input type="text" placeholder="Last Name" /></label>
+              <label for="first-name">
+                <input
+                  id="first-name"
+                  type="text"
+                  name="firstName"
+                  placeholder="First Name"
+                  data-rules="required|min=2"
+                />
+              </label>
+              <label for="last-name">
+                <input
+                  id="last-name"
+                  type="text"
+                  name="lastName"
+                  placeholder="Last Name"
+                />
+              </label>
             </div>
 
-            <!-- Select de posição -->
-            <label>
-              <select name="position" class="input-select">
+            <!-- Cargo desejado -->
+            <label for="position">
+              <select id="position" name="position" class="input-select">
                 <option value="" disabled selected hidden>Position</option>
                 <option value="Suporte">Suporte</option>
                 <option value="Atendimento">Atendimento</option>
@@ -43,60 +64,87 @@
               </select>
             </label>
 
-            <!-- Empresa -->
-            <label>
-              <input type="text" placeholder="Company" />
+            <!-- Empresa onde trabalha/trabalhou -->
+            <label for="company">
+              <input
+                id="company"
+                name="company"
+                type="text"
+                placeholder="Company"
+              />
             </label>
-          </form>
+          </div>
         </div>
-      </div>
 
-      <!-- Lado direito do formulário -->
-      <div class="right-side">
-        <div class="right-side-container">
-          <div class="title">Contact Details</div>
-          <form>
-            <!-- Rua + número -->
-            <label>
-              <input type="text" placeholder="Street + Nr" />
+        <!-- Lado direito do formulário: dados de contato -->
+        <div class="right-side">
+          <div class="right-side-container">
+            <div class="title">Contact Details</div>
+
+            <!-- Endereço (rua e número) -->
+            <label for="address">
+              <input
+                id="address"
+                name="address"
+                type="text"
+                placeholder="Street + Nr"
+              />
             </label>
 
-            <!-- País -->
-            <label>
-              <select name="country" class="input-select-white">
+            <!-- País de residência -->
+            <label for="country">
+              <select id="country" name="country" class="input-select-white">
                 <option value="" disabled selected hidden>Country</option>
                 <option value="Argentina">Argentina</option>
                 <option value="Brasil">Brasil</option>
-                <option value="Belgica">Belgica</option>
+                <option value="Belgica">Bélgica</option>
               </select>
             </label>
 
-            <!-- Código e telefone -->
-            <label class="code-number">
-              <input type="text" class="code" placeholder="Code +" />
-              <input type="text" class="number" placeholder="Phone Number" />
+            <!-- Código de área + telefone -->
+            <label for="phone" class="code-number">
+              <input
+                type="text"
+                class="code"
+                name="countryCode"
+                placeholder="Code +"
+              />
+              <input
+                type="text"
+                class="number"
+                name="phoneNumber"
+                placeholder="Phone Number"
+              />
             </label>
 
-            <!-- E-mail -->
-            <label>
-              <input type="text" placeholder="Your E-mail" />
+            <!-- E-mail do usuário -->
+            <label for="email">
+              <input
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Your E-mail"
+              />
             </label>
 
-            <!-- Termos -->
+            <!-- Aceitação de termos -->
             <label class="check-box-terms">
-              <input type="checkbox" />
+              <input type="checkbox" name="terms" required />
               <span>
-                I do accept the <a href="#">terms and conditions</a> of your site.
+                I do accept the <a href="#">terms and conditions</a> of your
+                site.
               </span>
             </label>
 
-            <!-- Botão -->
+            <!-- Botão de envio -->
             <label>
-              <button type="button" class="boti">Register Badge</button>
+              <input type="submit" class="button" value="Enviar" />
             </label>
-          </form>
+          </div>
         </div>
       </div>
-    </div>
+    </form>
+    <!-- Script externo com defer para não bloquear renderização -->
+    <script src="assets/script/script.js" defer></script>
   </body>
 </html>
