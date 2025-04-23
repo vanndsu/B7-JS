@@ -43,7 +43,10 @@ const formValidator = {
       if (validationResult !== true) {
         isValid = false;
         // Exibe erro no console (pode substituir por exibição visual)
-        console.warn(`Erro no campo "${input.placeholder || input.name}":`, validationResult);
+        console.warn(
+          `Erro no campo "${input.placeholder || input.name}":`,
+          validationResult
+        );
       }
     });
 

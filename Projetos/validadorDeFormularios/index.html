@@ -50,13 +50,19 @@
                   type="text"
                   name="lastName"
                   placeholder="Last Name"
+                  data-rules="required"
                 />
               </label>
             </div>
 
             <!-- Cargo desejado -->
             <label for="position">
-              <select id="position" name="position" class="input-select">
+              <select
+                id="position"
+                name="position"
+                class="input-select"
+                data-rules="select-required"
+              >
                 <option value="" disabled selected hidden>Position</option>
                 <option value="Suporte">Suporte</option>
                 <option value="Atendimento">Atendimento</option>
@@ -71,6 +77,7 @@
                 name="company"
                 type="text"
                 placeholder="Company"
+                data-rules="required"
               />
             </label>
           </div>
@@ -88,12 +95,18 @@
                 name="address"
                 type="text"
                 placeholder="Street + Nr"
+                data-rules="required"
               />
             </label>
 
             <!-- País de residência -->
             <label for="country">
-              <select id="country" name="country" class="input-select-white">
+              <select
+                id="country"
+                name="country"
+                class="input-select-white"
+                data-rules="select-required"
+              >
                 <option value="" disabled selected hidden>Country</option>
                 <option value="Argentina">Argentina</option>
                 <option value="Brasil">Brasil</option>
@@ -108,12 +121,14 @@
                 class="code"
                 name="countryCode"
                 placeholder="Code +"
+                data-rules="required"
               />
               <input
                 type="text"
                 class="number"
                 name="phoneNumber"
                 placeholder="Phone Number"
+                data-rules="required"
               />
             </label>
 
@@ -124,6 +139,7 @@
                 name="email"
                 type="email"
                 placeholder="Your E-mail"
+                data-rules="required"
               />
             </label>
 

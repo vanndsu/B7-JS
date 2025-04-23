@@ -16,7 +16,11 @@ body {
   display: flex; /* Define o layout flexbox */
   align-items: center; /* Alinha os itens no centro verticalmente */
   justify-content: center; /* Alinha os itens no centro horizontalmente */
-  background: linear-gradient(45deg, #968bf5, #5f52be); /* Fundo com gradiente */
+  background: linear-gradient(
+    45deg,
+    #968bf5,
+    #5f52be
+  ); /* Fundo com gradiente */
   height: 100vh; /* Faz o container ocupar toda a altura da tela */
 }
 
