@@ -272,3 +272,11 @@ input::placeholder {
     border-radius: 0; /* Remove o arredondamento nos cantos */
   }
 }
+.input-error {
+  border-bottom: 2px solid #ff4d4d;
+}
+.error-message {
+  color: #ff4d4d;
+  font-size: 12px;
+  margin-top: 5px;
+}

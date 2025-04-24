@@ -42,11 +42,17 @@ const formValidator = {
       const validationResult = formValidator.validateInput(input);
       if (validationResult !== true) {
         isValid = false;
-        // Exibe erro no console (pode substituir por exibição visual)
-        console.warn(
-          `Erro no campo "${input.placeholder || input.name}":`,
-          validationResult
-        );
+
+        // Remove mensagens anteriores
+        formValidator.removeErrors(input);
+
+        // Cria e insere a mensagem de erro
+        input.classList.add("input-error");
+
+        const errorElement = document.createElement("div");
+        errorElement.classList.add("error-message");
+        errorElement.innerText = validationResult;
+        input.parentElement.appendChild(errorElement);
       }
     });
 
@@ -90,6 +96,14 @@ const formValidator = {
     }
 
     return true;
+  },
+  removeErrors: (input) => {
+    input.classList.remove("input-error");
+    const error = input.parentElement.querySelector(".error-message");
+
+    if (error) {
+      error.remove();
+    }
   },
 };
 
