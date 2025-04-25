@@ -56,6 +56,7 @@ form {
    ============================ */
 label {
   width: 100%; /* Garante que o label ocupe 100% da largura */
+  position: relative;
 }
 
 /* ============================
@@ -104,7 +105,7 @@ input::placeholder {
    ============================ */
 .left-side,
 .right-side {
-  height: 500px; /* Define a altura dos lados esquerdo e direito */
+  height: 550px; /* Define a altura dos lados esquerdo e direito */
   width: 350px; /* Define a largura dos lados esquerdo e direito */
   padding: 50px; /* Adiciona preenchimento interno */
 }
@@ -171,14 +172,18 @@ input::placeholder {
 /* ============================
    Estilo para o campo de código de área
    ============================ */
-.code-number .code {
+
+.code-number .code-style {
   flex: 1; /* O campo de código ocupa 1 parte do espaço disponível */
+}
+.code-number .code-style .error-message {
+  width: 83px;
 }
 
 /* ============================
    Estilo para o campo de número de telefone
    ============================ */
-.code-number .number {
+.code-number .number-style {
   flex: 3; /* O campo de número ocupa 3 partes do espaço disponível */
 }
 
@@ -244,6 +249,24 @@ input::placeholder {
   transition: linear 0.3s; /* Transição suave ao passar o mouse */
 }
 
+.input-error {
+  border-bottom: 2px solid #ff4d4d;
+}
+.error-message {
+  color: #ff4d4d;
+  font-size: 12px;
+}
+.input-wrapper {
+  position: relative;
+}
+.error-message {
+  position: absolute;
+  bottom: -14.4px;
+}
+.input-wrapper.code-style .error-message {
+  bottom: -28px;
+}
+
 /* ============================
    Estilos responsivos para dispositivos móveis
    ============================ */
@@ -271,12 +294,4 @@ input::placeholder {
     background-color: #4835d4; /* Cor de fundo roxa */
     border-radius: 0; /* Remove o arredondamento nos cantos */
   }
-}
-.input-error {
-  border-bottom: 2px solid #ff4d4d;
-}
-.error-message {
-  color: #ff4d4d;
-  font-size: 12px;
-  margin-top: 5px;
 }

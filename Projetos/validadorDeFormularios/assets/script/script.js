@@ -77,6 +77,11 @@ const formValidator = {
             return "O campo precisa ser preenchido.";
           }
           break;
+        case "required-two":
+          if (input.value.trim() === "") {
+            return "Os dois campos precisam ser preenchidos.";
+          }
+          break;
 
         case "min":
           if (input.value.length < parseInt(value)) {

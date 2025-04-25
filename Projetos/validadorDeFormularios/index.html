@@ -20,65 +20,75 @@
 
             <!-- Campo de título (select obrigatório) -->
             <label for="title">
-              <select
-                id="title"
-                name="title"
-                class="input-select"
-                data-rules="select-required"
-              >
-                <option value="" disabled selected hidden>Title</option>
-                <option value="Suporte">Suporte</option>
-                <option value="Atendimento">Atendimento</option>
-                <option value="Estoque">Estoque</option>
-              </select>
+              <div class="input-wrapper">
+                <select
+                  id="title"
+                  name="title"
+                  class="input-select"
+                  data-rules="select-required"
+                >
+                  <option value="" disabled selected hidden>Title</option>
+                  <option value="Suporte">Suporte</option>
+                  <option value="Atendimento">Atendimento</option>
+                  <option value="Estoque">Estoque</option>
+                </select>
+              </div>
             </label>
 
             <!-- Nome completo -->
             <div class="full-name">
               <label for="first-name">
-                <input
-                  id="first-name"
-                  type="text"
-                  name="firstName"
-                  placeholder="First Name"
-                  data-rules="required|min=2"
-                />
+                <div class="input-wrapper">
+                  <input
+                    id="first-name"
+                    type="text"
+                    name="firstName"
+                    placeholder="First Name"
+                    data-rules="required|min=5"
+                  />
+                </div>
               </label>
               <label for="last-name">
-                <input
-                  id="last-name"
-                  type="text"
-                  name="lastName"
-                  placeholder="Last Name"
-                  data-rules="required"
-                />
+                <div class="input-wrapper">
+                  <input
+                    id="last-name"
+                    type="text"
+                    name="lastName"
+                    placeholder="Last Name"
+                    data-rules="required|min=5"
+                  />
+                </div>
               </label>
             </div>
 
             <!-- Cargo desejado -->
             <label for="position">
-              <select
-                id="position"
-                name="position"
-                class="input-select"
-                data-rules="select-required"
-              >
-                <option value="" disabled selected hidden>Position</option>
-                <option value="Suporte">Suporte</option>
-                <option value="Atendimento">Atendimento</option>
-                <option value="Estoque">Estoque</option>
-              </select>
+              <div class="input-wrapper">
+                <select
+                  id="position"
+                  name="position"
+                  class="input-select"
+                  data-rules="select-required"
+                >
+                  <option value="" disabled selected hidden>Position</option>
+                  <option value="Suporte">Suporte</option>
+                  <option value="Atendimento">Atendimento</option>
+                  <option value="Estoque">Estoque</option>
+                </select>
+              </div>
             </label>
 
             <!-- Empresa onde trabalha/trabalhou -->
             <label for="company">
-              <input
-                id="company"
-                name="company"
-                type="text"
-                placeholder="Company"
-                data-rules="required"
-              />
+              <div class="input-wrapper">
+                <input
+                  id="company"
+                  name="company"
+                  type="text"
+                  placeholder="Company"
+                  data-rules="required"
+                />
+              </div>
             </label>
           </div>
         </div>
@@ -90,57 +100,67 @@
 
             <!-- Endereço (rua e número) -->
             <label for="address">
-              <input
-                id="address"
-                name="address"
-                type="text"
-                placeholder="Street + Nr"
-                data-rules="required"
-              />
+              <div class="input-wrapper">
+                <input
+                  id="address"
+                  name="address"
+                  type="text"
+                  placeholder="Street + Nr"
+                  data-rules="required"
+                />
+              </div>
             </label>
 
             <!-- País de residência -->
             <label for="country">
-              <select
-                id="country"
-                name="country"
-                class="input-select-white"
-                data-rules="select-required"
-              >
-                <option value="" disabled selected hidden>Country</option>
-                <option value="Argentina">Argentina</option>
-                <option value="Brasil">Brasil</option>
-                <option value="Belgica">Bélgica</option>
-              </select>
+              <div class="input-wrapper">
+                <select
+                  id="country"
+                  name="country"
+                  class="input-select-white"
+                  data-rules="select-required"
+                >
+                  <option value="" disabled selected hidden>Country</option>
+                  <option value="Argentina">Argentina</option>
+                  <option value="Brasil">Brasil</option>
+                  <option value="Belgica">Bélgica</option>
+                </select>
+              </div>
             </label>
 
             <!-- Código de área + telefone -->
             <label for="phone" class="code-number">
-              <input
-                type="text"
-                class="code"
-                name="countryCode"
-                placeholder="Code +"
-                data-rules="required"
-              />
-              <input
-                type="text"
-                class="number"
-                name="phoneNumber"
-                placeholder="Phone Number"
-                data-rules="required"
-              />
+              <div class="input-wrapper code-style">
+                <input
+                  type="text"
+                  class="code"
+                  name="countryCode"
+                  placeholder="Code +"
+                  data-rules="required"
+                />
+              </div>
+              <div class="input-wrapper number-style">
+                <input
+                  type="text"
+                  class="number"
+                  name="phoneNumber"
+                  placeholder="Phone Number"
+                  data-rules="required"
+                />
+              </div>
             </label>
 
             <!-- E-mail do usuário -->
             <label for="email">
-              <input
-                id="email"
-                name="email"
-                type="email"
-                placeholder="Your E-mail"
-                data-rules="required"
-              />
+              <div class="input-wrapper">
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="Your E-mail"
+                  data-rules="required"
+                />
+              </div>
             </label>
 
             <!-- Aceitação de termos -->
@@ -154,12 +174,15 @@
 
             <!-- Botão de envio -->
             <label>
-              <input type="submit" class="button" value="Enviar" />
+              <div class="input-wrapper">
+                <input type="submit" class="button" value="Enviar" />
+              </div>
             </label>
           </div>
         </div>
       </div>
     </form>
+
     <!-- Script externo com defer para não bloquear renderização -->
     <script src="assets/script/script.js" defer></script>
   </body>
