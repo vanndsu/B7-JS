@@ -1,37 +1,9 @@
-// ===========================
-// Aplicação de estilo em selects ao selecionar valor
-// ===========================
-
-// Selects do lado esquerdo (fundo branco)
-const selects = document.querySelectorAll(".input-select");
-
-// Select do lado direito (fundo roxo)
-const selectWhite = document.querySelector(".input-select-white");
-
-// Aplica classe 'has-value' se houver valor nos selects do lado esquerdo
-selects.forEach((select) => {
-  select.addEventListener("change", ({ target }) => {
-    target.classList.toggle("has-value", !!target.value);
-  });
-});
-
-// Aplica classe 'has-value-white' no select do lado direito
-if (selectWhite) {
-  selectWhite.addEventListener("change", ({ target }) => {
-    target.classList.toggle("has-value-white", !!target.value);
-  });
-}
-
-// ===========================
-// Validador de formulário
-// ===========================
-
 const form = document.querySelector(".validator");
 const submitButton = document.querySelector(".button");
 
-// Objeto principal de validação
+let enableLiveValidation = false; // NOVO: começa como falso
+
 const formValidator = {
-  // Intercepta o envio do formulário
   handleSubmit: (event) => {
     event.preventDefault();
 
@@ -40,13 +12,10 @@ const formValidator = {
 
     inputs.forEach((input) => {
       const validationResult = formValidator.validateInput(input);
+      formValidator.removeErrors(input);
+
       if (validationResult !== true) {
         isValid = false;
-
-        // Remove mensagens anteriores
-        formValidator.removeErrors(input);
-
-        // Cria e insere a mensagem de erro
         input.classList.add("input-error");
 
         const errorElement = document.createElement("div");
@@ -56,12 +25,13 @@ const formValidator = {
       }
     });
 
-    if (isValid) {
-      form.submit(); // Submete se tudo estiver validado
+    if (!isValid) {
+      enableLiveValidation = true; // NOVO: ativa validação em tempo real
+    } else {
+      form.submit(); // Se tudo ok, envia
     }
   },
 
-  // Verifica regras de um input individual
   validateInput: (input) => {
     const ruleAttr = input.getAttribute("data-rules");
     if (!ruleAttr) return true;
@@ -82,19 +52,16 @@ const formValidator = {
             return "Os dois campos precisam ser preenchidos.";
           }
           break;
-
         case "min":
           if (input.value.length < parseInt(value)) {
             return `O campo deve ter pelo menos ${value} caracteres.`;
           }
           break;
-
         case "select-required":
           if (!input.value) {
             return "Selecione uma opção válida.";
           }
           break;
-
         default:
           console.warn(`Regra desconhecida: "${type}"`);
       }
@@ -102,6 +69,7 @@ const formValidator = {
 
     return true;
   },
+
   removeErrors: (input) => {
     input.classList.remove("input-error");
     const error = input.parentElement.querySelector(".error-message");
@@ -114,3 +82,24 @@ const formValidator = {
 
 // Dispara a validação no clique do botão
 submitButton.addEventListener("click", formValidator.handleSubmit);
+
+// Agora adiciona o input para todos os campos
+const inputs = form.querySelectorAll("[data-rules]");
+inputs.forEach((input) => {
+  input.addEventListener("input", () => {
+    if (!enableLiveValidation) return; // Só valida se liberado
+
+    const validationResult = formValidator.validateInput(input);
+
+    formValidator.removeErrors(input);
+
+    if (validationResult !== true) {
+      input.classList.add("input-error");
+
+      const errorElement = document.createElement("div");
+      errorElement.classList.add("error-message");
+      errorElement.innerText = validationResult;
+      input.parentElement.appendChild(errorElement);
+    }
+  });
+});
