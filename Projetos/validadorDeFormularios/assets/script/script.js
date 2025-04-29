@@ -1,3 +1,16 @@
+const selects = document.querySelectorAll(".input-select");
+const whiteSelects = document.querySelector(".input-select-white");
+
+selects.forEach((select) => {
+  select.addEventListener("change", ({ target }) => {
+    target.classList.toggle("has-value", !!target.value);
+  });
+});
+
+whiteSelects.addEventListener("change", ({ target }) => {
+  target.classList.toggle("has-value-white", !!target.value);
+});
+
 const form = document.querySelector(".validator");
 const submitButton = document.querySelector(".button");
 
