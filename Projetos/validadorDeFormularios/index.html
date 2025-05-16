@@ -133,19 +133,21 @@
               <div class="input-wrapper code-style">
                 <input
                   type="text"
-                  class="code"
+                  class="code code-number"
                   name="countryCode"
                   placeholder="Code +"
                   data-rules="required"
+                  maxlength="2"
                 />
               </div>
               <div class="input-wrapper number-style">
                 <input
                   type="text"
-                  class="number"
+                  class="number code-number"
                   name="phoneNumber"
                   placeholder="Phone Number"
-                  data-rules="required"
+                  data-rules="required|phone"
+                  maxlength="11"
                 />
               </div>
             </label>
@@ -158,7 +160,7 @@
                   name="email"
                   type="email"
                   placeholder="Your E-mail"
-                  data-rules="required"
+                  data-rules="required|email"
                 />
               </div>
             </label>
@@ -182,7 +184,6 @@
         </div>
       </div>
     </form>
-
     <!-- Script externo com defer para não bloquear renderização -->
     <script src="assets/script/script.js" defer></script>
   </body>

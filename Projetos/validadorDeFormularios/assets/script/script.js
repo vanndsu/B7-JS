@@ -1,5 +1,6 @@
 const selects = document.querySelectorAll(".input-select");
 const whiteSelects = document.querySelector(".input-select-white");
+const phone = document.querySelectorAll(".code-number");
 
 selects.forEach((select) => {
   select.addEventListener("change", ({ target }) => {
@@ -60,6 +61,23 @@ const formValidator = {
             return "O campo precisa ser preenchido.";
           }
           break;
+        case "email":
+          if (input.value.trim() != "") {
+            let regex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
+
+            if (!regex.test(input.value.toLowerCase())) {
+              return "Digite um e-mail válido.";
+            }
+          }
+          break;
+
+        case "phone":
+          let regex = /^\(?\d{2}\)?\s?(9?\d{4})-?\d{4}$/;
+          if (!regex.test(input.value)) {
+            return "digite um número válido";
+          }
+
+          break;
         case "required-two":
           if (input.value.trim() === "") {
             return "Os dois campos precisam ser preenchidos.";
@@ -115,4 +133,11 @@ inputs.forEach((input) => {
       input.parentElement.appendChild(errorElement);
     }
   });
+});
+
+phone.forEach((value) => {
+  value.addEventListener("input", () => {
+    value.value = value.value.replace(/\D/g, ""); // Remove tudo que não é número
+  });
+  
 });
