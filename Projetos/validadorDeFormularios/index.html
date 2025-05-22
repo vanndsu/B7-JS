@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Validador</title>
 
-    <!-- Estilo externo -->
+    <!-- Link para o CSS externo com os estilos da página -->
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
 
   <body>
-    <!-- Formulário principal com método POST -->
+    <!-- Formulário principal. Usa o método POST e uma URL fictícia como destino -->
     <form method="POST" action="https://chatgpt.com/" class="validator">
       <div class="container">
         <!-- Lado esquerdo do formulário: informações gerais -->
@@ -18,7 +18,7 @@
           <div class="left-side-container">
             <div class="title">General Information</div>
 
-            <!-- Campo de título (select obrigatório) -->
+            <!-- Campo: Título (select obrigatório com regra de validação) -->
             <label for="title">
               <div class="input-wrapper">
                 <select
@@ -35,7 +35,7 @@
               </div>
             </label>
 
-            <!-- Nome completo -->
+            <!-- Campos de nome e sobrenome (ambos obrigatórios com mínimo de 5 caracteres) -->
             <div class="full-name">
               <label for="first-name">
                 <div class="input-wrapper">
@@ -61,7 +61,7 @@
               </label>
             </div>
 
-            <!-- Cargo desejado -->
+            <!-- Campo: Cargo desejado (select obrigatório) -->
             <label for="position">
               <div class="input-wrapper">
                 <select
@@ -78,7 +78,7 @@
               </div>
             </label>
 
-            <!-- Empresa onde trabalha/trabalhou -->
+            <!-- Campo: Empresa onde trabalhou/trabalha (campo obrigatório) -->
             <label for="company">
               <div class="input-wrapper">
                 <input
@@ -93,12 +93,12 @@
           </div>
         </div>
 
-        <!-- Lado direito do formulário: dados de contato -->
+        <!-- Lado direito do formulário: informações de contato -->
         <div class="right-side">
           <div class="right-side-container">
             <div class="title">Contact Details</div>
 
-            <!-- Endereço (rua e número) -->
+            <!-- Campo: Endereço (campo obrigatório) -->
             <label for="address">
               <div class="input-wrapper">
                 <input
@@ -111,7 +111,7 @@
               </div>
             </label>
 
-            <!-- País de residência -->
+            <!-- Campo: País (select obrigatório com fundo branco) -->
             <label for="country">
               <div class="input-wrapper">
                 <select
@@ -128,8 +128,9 @@
               </div>
             </label>
 
-            <!-- Código de área + telefone -->
+            <!-- Campos: Código do país e número de telefone (ambos obrigatórios) -->
             <label for="phone" class="code-number">
+              <!-- Código do país -->
               <div class="input-wrapper code-style">
                 <input
                   type="text"
@@ -140,6 +141,7 @@
                   maxlength="2"
                 />
               </div>
+              <!-- Número de telefone -->
               <div class="input-wrapper number-style">
                 <input
                   type="text"
@@ -152,7 +154,7 @@
               </div>
             </label>
 
-            <!-- E-mail do usuário -->
+            <!-- Campo: E-mail (campo obrigatório com validação de formato) -->
             <label for="email">
               <div class="input-wrapper">
                 <input
@@ -165,16 +167,21 @@
               </div>
             </label>
 
-            <!-- Aceitação de termos -->
+            <!-- Checkbox: Aceitação dos termos (obrigatório com regra "checked") -->
             <label class="check-box-terms">
-              <input type="checkbox" name="terms" required />
+              <input
+                type="checkbox"
+                name="terms"
+                required
+                data-rules="checked"
+              />
               <span>
                 I do accept the <a href="#">terms and conditions</a> of your
                 site.
               </span>
             </label>
 
-            <!-- Botão de envio -->
+            <!-- Botão de envio do formulário -->
             <label>
               <div class="input-wrapper">
                 <input type="submit" class="button" value="Enviar" />
@@ -184,7 +191,8 @@
         </div>
       </div>
     </form>
-    <!-- Script externo com defer para não bloquear renderização -->
+
+    <!-- Importa o JavaScript com a lógica de validação personalizada -->
     <script src="assets/script/script.js" defer></script>
   </body>
 </html>

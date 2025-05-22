@@ -1,6 +1,19 @@
+// ============================
+// Seletores de elementos
+// ============================
+
 const selects = document.querySelectorAll(".input-select");
-const whiteSelects = document.querySelector(".input-select-white");
-const phone = document.querySelectorAll(".code-number");
+const whiteSelect = document.querySelector(".input-select-white");
+const phoneInputs = document.querySelectorAll(".code-number input");
+
+const form = document.querySelector(".validator");
+const submitButton = document.querySelector(".button");
+
+let enableLiveValidation = false; // Controle da validação em tempo real
+
+// ============================
+// Efeito visual: select preenchido
+// ============================
 
 selects.forEach((select) => {
   select.addEventListener("change", ({ target }) => {
@@ -8,16 +21,18 @@ selects.forEach((select) => {
   });
 });
 
-whiteSelects.addEventListener("change", ({ target }) => {
+whiteSelect.addEventListener("change", ({ target }) => {
   target.classList.toggle("has-value-white", !!target.value);
 });
 
-const form = document.querySelector(".validator");
-const submitButton = document.querySelector(".button");
-
-let enableLiveValidation = false; // NOVO: começa como falso
+// ============================
+// Lógica principal de validação
+// ============================
 
 const formValidator = {
+  // --------------------------------
+  // Função principal ao enviar
+  // --------------------------------
   handleSubmit: (event) => {
     event.preventDefault();
 
@@ -40,12 +55,15 @@ const formValidator = {
     });
 
     if (!isValid) {
-      enableLiveValidation = true; // NOVO: ativa validação em tempo real
+      enableLiveValidation = true;
     } else {
-      form.submit(); // Se tudo ok, envia
+      form.submit(); // Tudo válido → envia formulário
     }
   },
 
+  // --------------------------------
+  // Validação de regras por campo
+  // --------------------------------
   validateInput: (input) => {
     const ruleAttr = input.getAttribute("data-rules");
     if (!ruleAttr) return true;
@@ -61,10 +79,10 @@ const formValidator = {
             return "O campo precisa ser preenchido.";
           }
           break;
-        case "email":
-          if (input.value.trim() != "") {
-            let regex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
 
+        case "email":
+          if (input.value.trim() !== "") {
+            const regex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/i;
             if (!regex.test(input.value.toLowerCase())) {
               return "Digite um e-mail válido.";
             }
@@ -72,27 +90,36 @@ const formValidator = {
           break;
 
         case "phone":
-          let regex = /^\(?\d{2}\)?\s?(9?\d{4})-?\d{4}$/;
-          if (!regex.test(input.value)) {
-            return "digite um número válido";
+          const phoneRegex = /^\(?\d{2}\)?\s?(9?\d{4})-?\d{4}$/;
+          if (!phoneRegex.test(input.value)) {
+            return "Digite um número válido.";
           }
-
           break;
+
         case "required-two":
           if (input.value.trim() === "") {
             return "Os dois campos precisam ser preenchidos.";
           }
           break;
+
         case "min":
           if (input.value.length < parseInt(value)) {
             return `O campo deve ter pelo menos ${value} caracteres.`;
           }
           break;
+
         case "select-required":
           if (!input.value) {
             return "Selecione uma opção válida.";
           }
           break;
+
+        case "checked":
+          if (!input.checked) {
+            return "Aceite os termos para continuar.";
+          }
+          break;
+
         default:
           console.warn(`Regra desconhecida: "${type}"`);
       }
@@ -101,27 +128,30 @@ const formValidator = {
     return true;
   },
 
+  // --------------------------------
+  // Remove mensagens de erro do campo
+  // --------------------------------
   removeErrors: (input) => {
     input.classList.remove("input-error");
     const error = input.parentElement.querySelector(".error-message");
-
-    if (error) {
-      error.remove();
-    }
+    if (error) error.remove();
   },
 };
 
-// Dispara a validação no clique do botão
+// ============================
+// Eventos de envio e digitação
+// ============================
+
+// Envio do formulário (click no botão)
 submitButton.addEventListener("click", formValidator.handleSubmit);
 
-// Agora adiciona o input para todos os campos
-const inputs = form.querySelectorAll("[data-rules]");
-inputs.forEach((input) => {
+// Validação em tempo real enquanto digita
+const allInputs = form.querySelectorAll("[data-rules]");
+allInputs.forEach((input) => {
   input.addEventListener("input", () => {
-    if (!enableLiveValidation) return; // Só valida se liberado
+    if (!enableLiveValidation) return;
 
     const validationResult = formValidator.validateInput(input);
-
     formValidator.removeErrors(input);
 
     if (validationResult !== true) {
@@ -135,9 +165,12 @@ inputs.forEach((input) => {
   });
 });
 
-phone.forEach((value) => {
-  value.addEventListener("input", () => {
-    value.value = value.value.replace(/\D/g, ""); // Remove tudo que não é número
+// ============================
+// Máscara simples: remover não numéricos do telefone
+// ============================
+
+phoneInputs.forEach((input) => {
+  input.addEventListener("input", () => {
+    input.value = input.value.replace(/\D/g, "");
   });
-  
 });

@@ -1,254 +1,218 @@
-/* Importando a fonte 'Roboto' do Google Fonts */
+/* ============================
+   Fonte padrão
+   ============================ */
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
 /* ============================
-   Estilos gerais para o body
+   Estilo global da página
    ============================ */
 body {
-  margin: 0; /* Remove a margem padrão */
-  font-family: "Roboto"; /* Aplica a fonte 'Roboto' no body */
+  margin: 0; /* Remove margens padrão */
+  font-family: "Roboto"; /* Fonte principal */
 }
 
 /* ============================
-   Container principal do formulário
+   Container principal da página
    ============================ */
 .container {
-  display: flex; /* Define o layout flexbox */
-  align-items: center; /* Alinha os itens no centro verticalmente */
-  justify-content: center; /* Alinha os itens no centro horizontalmente */
-  background: linear-gradient(
-    45deg,
-    #968bf5,
-    #5f52be
-  ); /* Fundo com gradiente */
-  height: 100vh; /* Faz o container ocupar toda a altura da tela */
+  display: flex; /* Layout em linha */
+  align-items: center; /* Alinhamento vertical central */
+  justify-content: center; /* Alinhamento horizontal central */
+  background: linear-gradient(45deg, #968bf5, #5f52be); /* Fundo em gradiente */
+  height: 100vh; /* Altura total da tela */
 }
 
 /* ============================
-   Estilos para o formulário
+   Formulário
    ============================ */
 form {
-  display: flex; /* Usa flexbox para o layout do formulário */
-  flex-direction: column; /* Organiza os itens em coluna */
-  gap: 30px; /* Espaçamento entre os elementos do formulário */
+  display: flex;
+  flex-direction: column; /* Organiza os filhos em coluna */
+  gap: 30px; /* Espaço entre os elementos */
 }
 
 /* ============================
-   Estilo para os títulos
+   Títulos das seções
    ============================ */
 .title {
-  font-size: 30px; /* Define o tamanho da fonte */
-  margin-bottom: 30px; /* Adiciona margem inferior */
+  font-size: 30px;
+  margin-bottom: 30px;
 }
-
-/* ============================
-   Cores específicas para os títulos das seções
-   ============================ */
 .left-side .title {
-  color: #165aec; /* Cor azul para o título do lado esquerdo */
+  color: #165aec; /* Azul */
 }
 .right-side .title {
-  color: #ffffff; /* Cor branca para o título do lado direito */
+  color: #ffffff; /* Branco */
 }
 
 /* ============================
-   Estilo para os labels (rótulos)
+   Labels dos campos
    ============================ */
 label {
-  width: 100%; /* Garante que o label ocupe 100% da largura */
+  width: 100%;
   position: relative;
 }
 
 /* ============================
-   Estilo para o foco nos campos de input e select
+   Foco em campos
    ============================ */
 input:focus,
 select:focus {
-  outline: none; /* Remove a borda de foco padrão */
+  outline: none; /* Remove a borda azul padrão */
 }
 
 /* ============================
-   Estilos gerais para inputs e selects
+   Inputs e Selects padrão
    ============================ */
 input,
 select {
-  border: none; /* Remove as bordas padrão */
-  border-bottom: 1px solid #a9a9a9; /* Adiciona uma borda inferior */
-  width: 100%; /* Faz os inputs e selects ocuparem toda a largura */
-  padding: 20px; /* Adiciona preenchimento interno */
-  box-sizing: border-box; /* Garante que o preenchimento seja incluído na largura total */
+  border: none;
+  border-bottom: 1px solid #a9a9a9;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 /* ============================
-   Estilo para os selects
+   Estilo visual de selects
    ============================ */
 select {
-  color: #a9a9a9; /* Define a cor do texto do select */
+  color: #a9a9a9; /* Cor cinza inicial */
 }
-
-/* ============================
-   Estilo para selects com valor selecionado
-   ============================ */
 .input-select.has-value {
-  color: #000; /* Muda a cor do texto após seleção de um valor */
+  color: #000; /* Após seleção */
 }
 
 /* ============================
-   Estilo para o texto de placeholder nos inputs
+   Placeholder nos inputs
    ============================ */
 input::placeholder {
-  color: #a9a9a9; /* Define a cor do texto do placeholder */
+  color: #a9a9a9;
 }
 
 /* ============================
-   Lado esquerdo e direito do formulário
+   Layout das seções esquerda/direita
    ============================ */
 .left-side,
 .right-side {
-  height: 550px; /* Define a altura dos lados esquerdo e direito */
-  width: 350px; /* Define a largura dos lados esquerdo e direito */
-  padding: 50px; /* Adiciona preenchimento interno */
+  height: 550px;
+  width: 350px;
+  padding: 50px;
 }
 
 /* ============================
-   Estilos específicos para o lado esquerdo
+   Estilo da seção esquerda
    ============================ */
 .left-side {
-  background-color: #fff; /* Cor de fundo branca */
-  border-top-left-radius: 10px; /* Arredonda o canto superior esquerdo */
-  border-bottom-left-radius: 10px; /* Arredonda o canto inferior esquerdo */
+  background-color: #fff;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 /* ============================
-   Estilos para os containers internos dos lados esquerdo e direito
+   Container interno (lado esquerdo e direito)
    ============================ */
 .left-side-container,
 .right-side-container {
-  display: flex; /* Usando flexbox */
-  flex-direction: column; /* Organiza os itens em coluna */
-  gap: 20px; /* Adiciona espaçamento entre os itens */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 /* ============================
-   Estilos específicos para o lado direito
+   Estilo da seção direita
    ============================ */
 .right-side {
-  background-color: #4835d4; /* Cor de fundo roxa */
-  border-top-right-radius: 10px; /* Arredonda o canto superior direito */
-  border-bottom-right-radius: 10px; /* Arredonda o canto inferior direito */
+  background-color: #4835d4;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 /* ============================
-   Estilos para o campo de nome completo
+   Campo nome + sobrenome
    ============================ */
 .full-name {
-  display: flex; /* Usa flexbox para o layout */
-  gap: 20px; /* Espaçamento entre os campos de nome */
+  display: flex;
+  gap: 20px;
 }
 
 /* ============================
-   Estilo para o input e select do lado direito (exceto o botão de submit)
+   Inputs e selects transparentes no lado direito
    ============================ */
 .right-side input:not([type="submit"]),
 .right-side select {
-  background-color: transparent; /* Define o fundo transparente */
+  background-color: transparent;
 }
-
-/* ============================
-   Estilo para os inputs no lado direito (exceto o botão de submit)
-   ============================ */
 .right-side input:not([type="submit"]) {
-  color: #fff; /* Define a cor do texto como branco */
+  color: #fff; /* Texto branco */
 }
 
 /* ============================
-   Estilos para os campos de código de área e telefone
+   Código do país e número de telefone
    ============================ */
 .code-number {
-  display: flex; /* Usando flexbox para o layout */
-  gap: 20px; /* Espaçamento entre os campos */
+  display: flex;
+  gap: 20px;
 }
-
-/* ============================
-   Estilo para o campo de código de área
-   ============================ */
-
 .code-number .code-style {
-  flex: 1; /* O campo de código ocupa 1 parte do espaço disponível */
+  flex: 1;
 }
 .code-number .code-style .error-message {
   width: 83px;
 }
-
-/* ============================
-   Estilo para o campo de número de telefone
-   ============================ */
 .code-number .number-style {
-  flex: 3; /* O campo de número ocupa 3 partes do espaço disponível */
+  flex: 3;
 }
 
 /* ============================
-   Estilos para a aceitação de termos
+   Checkbox de termos
    ============================ */
 .check-box-terms {
-  display: flex; /* Usando flexbox para o layout */
-  font-size: 12px; /* Tamanho da fonte reduzido */
-  gap: 10px; /* Espaçamento entre os itens */
-  align-items: center; /* Alinha os itens no centro verticalmente */
-  color: #fff; /* Cor do texto como branco */
+  display: flex;
+  font-size: 12px;
+  gap: 10px;
+  align-items: center;
+  color: #fff;
 }
-
-/* ============================
-   Estilo para o checkbox de aceitação
-   ============================ */
 .check-box-terms input {
-  width: 12px; /* Define o tamanho do checkbox */
+  width: 12px;
 }
-
-/* ============================
-   Estilo para o link dentro da aceitação de termos
-   ============================ */
 .check-box-terms a {
-  color: #fff; /* Cor do link como branco */
+  color: #fff;
 }
 
 /* ============================
-   Estilos para selects com fundo branco (lado direito)
+   Selects com fundo branco (após escolha)
    ============================ */
 .input-select-white.has-value-white {
-  color: #fff; /* Cor do texto do select */
-  background-color: #4835d4; /* Cor de fundo roxa */
+  color: #fff;
+  background-color: #4835d4;
 }
-
-/* ============================
-   Estilos para as opções dentro do select com fundo branco
-   ============================ */
 .input-select-white.has-value-white option {
-  color: #fff; /* Cor do texto das opções */
+  color: #fff;
 }
 
 /* ============================
-   Estilos para o botão de envio
+   Botão de envio
    ============================ */
 .butto {
-  background-color: #fff; /* Cor de fundo branca */
-  color: #4835d4; /* Cor do texto roxa */
-  padding: 15px 30px; /* Preenchimento interno do botão */
-  border: none; /* Remove a borda do botão */
-  border-radius: 5px; /* Arredonda os cantos do botão */
-  cursor: pointer; /* Muda o cursor para indicar que o botão é clicável */
-  font-size: 16px; /* Tamanho da fonte do texto */
+  background-color: #fff;
+  color: #4835d4;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+.butto:hover {
+  background-color: #f8f3f3;
+  transform: scale(1.01);
+  transition: linear 0.3s;
 }
 
 /* ============================
-   Estilos para o botão de envio no estado hover
+   Mensagens de erro
    ============================ */
-.butto:hover {
-  background-color: #f8f3f3; /* Cor de fundo no hover */
-  transform: scale(1.01, 1.01); /* Leve aumento no tamanho do botão */
-  transition: linear 0.3s; /* Transição suave ao passar o mouse */
-}
-
 .input-error {
   border-bottom: 2px solid #ff4d4d;
 }
@@ -268,30 +232,18 @@ input::placeholder {
 }
 
 /* ============================
-   Estilos responsivos para dispositivos móveis
+   Responsividade (até 960px)
    ============================ */
 @media (max-width: 960px) {
   .container {
-    display: flex; /* Usa flexbox para o layout */
-    flex-direction: column; /* Organiza os itens em coluna */
-    align-items: center; /* Alinha os itens no centro horizontalmente */
-    justify-content: center; /* Alinha os itens no centro verticalmente */
-    height: 100%; /* Ajusta a altura do container */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
   }
 
-  /* ============================
-     Ajustes para o lado esquerdo no mobile
-     ============================ */
-  .left-side {
-    background-color: #fff; /* Cor de fundo branca */
-    border-radius: 0; /* Remove o arredondamento nos cantos */
-  }
-
-  /* ============================
-     Ajustes para o lado direito no mobile
-     ============================ */
+  .left-side,
   .right-side {
-    background-color: #4835d4; /* Cor de fundo roxa */
-    border-radius: 0; /* Remove o arredondamento nos cantos */
+    border-radius: 0; /* Remove cantos arredondados */
   }
 }
